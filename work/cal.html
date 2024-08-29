@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .button { /*버튼 색상 추가*/
+            padding: 10px;
+            width: 50px;
+            height: 50px;
+            margin: 5px;
+            background: linear-gradient(white);
+            color: black;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        body {  
+        /* 요소 가운데 정렬 */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        font-family: 'Gaseok_One', sans-serif; /* 로컬 폰트 적용 */
+    
+        /* 배경 이미지 추가 */
+        background-image: url('images.jpg');
+        background-size: cover; 
+        background-position: center; 
+        background-repeat: no-repeat; 
+        }
+
+     .container {
+        text-align: center;
+        }
+
+    </style>
+    <script>
+        function add() {
+            let a = parseFloat(document.getElementById("number1").value);
+            let b = parseFloat(document.getElementById("number2").value);
+            let sum = a + b;
+            document.getElementById("result").value = sum;
+        }
+
+        function subtract() {
+            let a = parseFloat(document.getElementById("number1").value);
+            let b = parseFloat(document.getElementById("number2").value);
+            let difference = a - b;
+            document.getElementById("result").value = difference;
+        }
+
+        function multiply() {
+            let a = parseFloat(document.getElementById("number1").value);
+            let b = parseFloat(document.getElementById("number2").value);
+            let product = a * b;
+            document.getElementById("result").value = product;
+        }
+
+        function divide() {
+            let a = parseFloat(document.getElementById("number1").value);
+            let b = parseFloat(document.getElementById("number2").value);
+            if (b !== 0) {
+                let quotient = a / b;
+                document.getElementById("result").value = quotient;
+            } else {
+                document.getElementById("result").value = "0으로 나눌 수 없습니다.";
+            }
+        }
+
+        function square() { //제곱기능 추가
+            let a = parseFloat(document.getElementById("number1").value);  
+            let b = parseFloat(document.getElementById("number2").value);
+            let result = Math.pow(a, b); // a를 b제곱함
+            document.getElementById("result").value = result;
+        }
+        function squareRoot() { // 루트 기능 추가
+            let a = parseFloat(document.getElementById("number1").value);
+            document.getElementById("number2").value = "루트 연산은 수가 하나만 필요합니다.";
+            let result = Math.sqrt(a); // 루트a의 값을 구함
+            document.getElementById("result").value = result;
+        }
+
+    </script>
+</head>
+<body>
+    <label for="number1">숫자 1:</label> <!--label태그 활용1-->
+    <input type="number" id="number1" value="9"><br>
+    <label for="number1">숫자 2:</label> <!--label태그 활용2-->
+    <input type="number" id="number2" value="6"><br>
+    <input type="button" value="+" onClick="add()" class="button">
+    <input type="button" value="-" onClick="subtract()" class="button">
+    <input type="button" value="*" onClick="multiply()" class="button">
+    <input type="button" value="/" onClick="divide()" class="button">
+    <input type="button" value="**" onClick="square()" class="button"> <!-- 제곱 버튼 추가 -->
+    <input type="button" value="√" onClick="squareRoot()" class="button"> <!-- 루트 버튼 추가 -->
+    <br>
+    <label for="result">연산결과:</label>
+    <input type="text" id="result" value="" readonly>
+</body>
+</html>
